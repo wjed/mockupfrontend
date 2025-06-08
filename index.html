@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS Certification Study Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { BrowserRouter, Switch, Route, Link } = ReactRouterDOM;
+
+    const Navbar = () => (
+      <nav className="bg-blue-600 p-4 text-white">
+        <ul className="flex space-x-4 justify-center">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/quiz">Quiz</Link></li>
+          <li><Link to="/chat">Chat</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+      </nav>
+    );
+
+    const Home = () => (
+      <div className="text-center mt-20">
+        <h1 className="text-4xl mb-8">AWS Certification Study Assistant</h1>
+        <div className="space-x-4">
+          <Link to="/quiz" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Take a Quiz</Link>
+          <Link to="/chat" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Chat with AI</Link>
+        </div>
+      </div>
+    );
+
+    const Quiz = () => (
+      <div className="p-8 text-center">
+        <h2 className="text-2xl mb-4">Quiz Page</h2>
+        <p>Quiz content will go here.</p>
+      </div>
+    );
+
+    const Chat = () => (
+      <div className="p-8 text-center">
+        <h2 className="text-2xl mb-4">Chat Page</h2>
+        <p>Chat interface will go here.</p>
+      </div>
+    );
+
+    const About = () => (
+      <div className="p-8">
+        <h2 className="text-2xl mb-4">About This Project</h2>
+        <p>This project is a simple mockup for the AWS Beacon certification study assistant.</p>
+      </div>
+    );
+
+    const App = () => (
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/quiz" component={Quiz} />
+          <Route path="/chat" component={Chat} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </BrowserRouter>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
